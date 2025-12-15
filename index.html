@@ -19,65 +19,21 @@
         }
         
         body {
-            background: linear-gradient(135deg, #000428 0%, #004e92 100%);
-            color: #00d4ff;
+            background: #0a0a0a;
+            color: #e5e5e5;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            cursor: crosshair;
         }
         
         .corelock-glow {
-            text-shadow: 
-                0 0 10px rgba(0, 212, 255, 1),
-                0 0 20px rgba(0, 212, 255, 0.8),
-                0 0 30px rgba(0, 212, 255, 0.6),
-                0 0 40px rgba(100, 149, 237, 0.4),
-                0 0 50px rgba(135, 206, 250, 0.2);
-            animation: coreGlow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes coreGlow {
-            from {
-                text-shadow: 
-                    0 0 10px rgba(0, 212, 255, 1),
-                    0 0 20px rgba(0, 212, 255, 0.8),
-                    0 0 30px rgba(0, 212, 255, 0.6),
-                    0 0 40px rgba(100, 149, 237, 0.4),
-                    0 0 50px rgba(135, 206, 250, 0.2);
-            }
-            to {
-                text-shadow: 
-                    0 0 20px rgba(0, 212, 255, 1),
-                    0 0 40px rgba(0, 212, 255, 1),
-                    0 0 60px rgba(0, 212, 255, 0.8),
-                    0 0 80px rgba(100, 149, 237, 0.6),
-                    0 0 100px rgba(135, 206, 250, 0.4);
-            }
+            color: #ff9500;
+            font-weight: 600;
         }
         
         .field-container {
-            background: 
-                radial-gradient(ellipse at top, rgba(0, 212, 255, 0.15) 0%, transparent 70%),
-                radial-gradient(ellipse at bottom, rgba(100, 149, 237, 0.15) 0%, transparent 70%),
-                linear-gradient(135deg, #000428 0%, #004e92 50%, #001a3a 100%);
+            background: #0a0a0a;
             min-height: 100vh;
             position: relative;
-        }
-        
-        .field-container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(45deg, transparent 49%, rgba(0, 212, 255, 0.05) 50%, transparent 51%),
-                linear-gradient(-45deg, transparent 49%, rgba(100, 149, 237, 0.05) 50%, transparent 51%);
-            background-size: 30px 30px;
-            animation: fieldGrid 25s linear infinite;
-        }
-        
-        @keyframes fieldGrid {
-            0% { transform: translateX(0) translateY(0); }
-            100% { transform: translateX(30px) translateY(30px); }
         }
         
         .compact-header {
@@ -85,9 +41,8 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 24px;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.4);
-            background: linear-gradient(135deg, rgba(0, 4, 40, 0.95) 0%, rgba(0, 78, 146, 0.8) 100%);
-            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            background: #121212;
         }
         
         .logo-compact {
@@ -156,58 +111,26 @@
         }
         
         .core-card {
-            background: linear-gradient(135deg, rgba(0, 4, 40, 0.95) 0%, rgba(0, 78, 146, 0.4) 100%);
-            border: 2px solid rgba(0, 212, 255, 0.5);
-            backdrop-filter: blur(25px);
-            box-shadow: 
-                0 0 40px rgba(0, 212, 255, 0.3),
-                inset 0 2px 0 rgba(0, 212, 255, 0.3),
-                inset 0 -2px 0 rgba(100, 149, 237, 0.2);
-            border-radius: 20px;
-            padding: 30px;
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
             position: relative;
-            overflow: hidden;
-            margin-bottom: 30px;
-            min-height: 600px;
+            margin-bottom: 24px;
+            min-height: 400px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            transition: all 0.4s ease;
+            transition: border-color 0.2s ease;
         }
-        
+
         .core-card:hover {
-            border-color: rgba(0, 212, 255, 0.8);
-            box-shadow: 
-                0 0 50px rgba(0, 212, 255, 0.4),
-                inset 0 2px 0 rgba(0, 212, 255, 0.4),
-                inset 0 -2px 0 rgba(100, 149, 237, 0.2);
-            transform: translateY(-2px);
+            border-color: #3a3a3a;
         }
         
         .chrome-border {
-            border: 2px solid transparent;
-            background: linear-gradient(135deg, rgba(0, 4, 40, 0.9), rgba(0, 78, 146, 0.3)) padding-box,
-                        linear-gradient(45deg, #00d4ff, #6495ed, #87ceeb, #00d4ff) border-box;
-            box-shadow: 
-                0 0 20px rgba(0, 212, 255, 0.5),
-                0 0 40px rgba(100, 149, 237, 0.3),
-                inset 0 0 20px rgba(0, 212, 255, 0.1);
-            animation: chromePulse 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes chromePulse {
-            from {
-                box-shadow: 
-                    0 0 20px rgba(0, 212, 255, 0.5),
-                    0 0 40px rgba(100, 149, 237, 0.3),
-                    inset 0 0 20px rgba(0, 212, 255, 0.1);
-            }
-            to {
-                box-shadow: 
-                    0 0 40px rgba(0, 212, 255, 0.8),
-                    0 0 80px rgba(100, 149, 237, 0.6),
-                    inset 0 0 40px rgba(0, 212, 255, 0.2);
-            }
+            border: 1px solid #2a2a2a;
+            background: #121212;
         }
         
         .grid {
@@ -1128,15 +1051,12 @@
     <div class="field-container">
         <div class="content">
             <!-- Enhanced CoreLock Logo Shrine -->
-            <header class="shrine-header rainbow-border holographic" style="
-                background: radial-gradient(circle at center, rgba(0, 212, 255, 0.4) 0%, rgba(0, 4, 40, 0.98) 70%),
-                            linear-gradient(135deg, rgba(0, 4, 40, 0.95) 0%, rgba(0, 78, 146, 0.8) 100%);
-                backdrop-filter: blur(30px);
-                padding: 30px;
+            <header class="shrine-header" style="
+                background: #121212;
+                padding: 40px 30px;
                 text-align: center;
-                border-radius: 20px 20px 0 0;
+                border-bottom: 1px solid #2a2a2a;
                 position: relative;
-                overflow: hidden;
             ">
                 <div class="shrine-background" style="
                     position: absolute;
@@ -1176,57 +1096,42 @@
                         ">
                     </div>
                     
-                    <div class="shrine-title neon-text" style="
+                    <div class="shrine-title" style="
                         font-family: 'Orbitron', monospace;
                         font-size: 2.5rem;
-                        font-weight: 900;
+                        font-weight: 700;
                         text-transform: uppercase;
-                        letter-spacing: 5px;
-                        background: linear-gradient(45deg, #ff00ff, #00d4ff, #00ff88, #ffd700, #ff00ff);
-                        background-size: 400% 400%;
-                        background-clip: text;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        animation: hologramShift 4s ease-in-out infinite;
-                        text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.6);
-                    ">✨ CORELOCK PULSE ✨</div>
+                        letter-spacing: 3px;
+                        color: #e5e5e5;
+                    ">CORELOCK PULSE</div>
                     
-                    <div class="subtitle corelock-glow" style="
+                    <div class="subtitle" style="
                         font-family: 'Inter', sans-serif;
-                        font-size: 1.2rem;
-                        font-weight: 600;
-                        color: #87ceeb;
-                        opacity: 0.9;
-                        margin-top: -10px;
-                    ">FIELD AMPLIFIER • REAL-TIME $LOCK NEXUS</div>
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: #999;
+                        margin-top: 8px;
+                    ">REAL-TIME $LOCK ANALYTICS</div>
                     
                     <div class="live-indicator" style="
                         display: flex;
                         align-items: center;
-                        gap: 12px;
-                        background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(100, 149, 237, 0.1) 100%);
-                        padding: 12px 24px;
-                        border-radius: 25px;
-                        border: 1px solid rgba(0, 212, 255, 0.4);
-                        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+                        gap: 8px;
+                        background: rgba(255, 149, 0, 0.1);
+                        padding: 8px 16px;
+                        border-radius: 6px;
+                        border: 1px solid rgba(255, 149, 0, 0.3);
+                        margin-top: 16px;
+                        display: inline-flex;
                     ">
                         <div class="pulse-orb" style="
-                            width: 16px; 
-                            height: 16px; 
-                            background: radial-gradient(circle, #00d4ff 0%, rgba(0, 212, 255, 0.5) 100%); 
-                            border-radius: 50%; 
-                            box-shadow: 0 0 20px #00d4ff;
-                            animation: pulse 1.5s infinite;
+                            width: 8px;
+                            height: 8px;
+                            background: #ff9500;
+                            border-radius: 50%;
+                            animation: pulse 2s infinite;
                         "></div>
-                        <span class="text-sm real-data-indicator" style="font-weight: 600;">LIVE BLOCKCHAIN DATA</span>
-                        <div class="pulse-orb" style="
-                            width: 12px; 
-                            height: 12px; 
-                            background: radial-gradient(circle, #6495ed 0%, rgba(100, 149, 237, 0.5) 100%); 
-                            border-radius: 50%; 
-                            box-shadow: 0 0 15px #6495ed;
-                            animation: pulse 2s infinite 0.5s;
-                        "></div>
+                        <span class="text-sm" style="font-weight: 500; color: #ff9500; font-size: 0.875rem;">LIVE DATA</span>
                     </div>
                 </div>
                 
@@ -1244,21 +1149,20 @@
                     justify-content: flex-start;
                 ">
                     <button id="phantom-connect" onclick="connectPhantom()" style="
-                        background: linear-gradient(135deg, rgba(20, 20, 40, 0.95) 0%, rgba(40, 30, 60, 0.9) 100%);
-                        border: 1px solid rgba(171, 108, 236, 0.6);
-                        color: #AB6CEC;
+                        background: #1a1a1a;
+                        border: 1px solid #2a2a2a;
+                        color: #e5e5e5;
                         padding: 8px 12px;
-                        border-radius: 12px;
+                        border-radius: 6px;
                         cursor: pointer;
-                        font-weight: 600;
+                        font-weight: 500;
                         font-size: 0.75rem;
-                        transition: all 0.3s ease;
+                        transition: background 0.2s ease;
                         display: flex;
                         align-items: center;
                         gap: 6px;
-                        box-shadow: 0 0 10px rgba(171, 108, 236, 0.3);
-                    " onmouseover="this.style.boxShadow='0 0 20px rgba(171, 108, 236, 0.6)'; this.style.transform='translateY(-1px)'"
-                       onmouseout="this.style.boxShadow='0 0 10px rgba(171, 108, 236, 0.3)'; this.style.transform='translateY(0)'">
+                    " onmouseover="this.style.background='#222'"
+                       onmouseout="this.style.background='#1a1a1a'">
                         <svg width="16" height="16" viewBox="0 0 128 128" fill="none">
                             <circle cx="64" cy="64" r="64" fill="#AB6CEC"/>
                             <path d="M88 32L40 32C36 32 32 36 32 40V88C32 92 36 96 40 96H88C92 96 96 92 96 88V40C96 36 92 32 88 32ZM76 76C76 80 73 84 68 84H60C56 84 52 80 52 76V52C52 48 56 44 60 44H68C73 44 76 48 76 52V76Z" fill="white"/>
@@ -1358,7 +1262,7 @@
             <!-- BIRDEYE HOMEPAGE WITH TRADING BUBBLES -->
             <div class="grid grid-cols-1 mb-6">
                 <div class="col-span-1">
-                    <div class="core-card rainbow-border">
+                    <div class="core-card">
                         <div class="text-xl font-bold corelock-glow mb-4 flex items-center justify-center">
                             <div class="flex items-center space-x-2">
                                 <span style="font-size: 24px;">🦅</span>
@@ -1419,7 +1323,7 @@
             <div class="grid grid-cols-1">
                 <!-- DexScreener Live Chart -->
                 <div class="col-span-1">
-                    <div class="core-card rainbow-border holographic">
+                    <div class="core-card">
                         <div class="text-xl font-bold corelock-glow mb-4 flex items-center space-x-2">
                             <span style="font-size: 24px;">📈</span>
                             <span>LIVE DEXSCREENER CHART</span>
@@ -1531,7 +1435,7 @@
 
                 <!-- CORELOCK NFT COLLECTION -->
                 <div class="col-span-1">
-                    <div class="core-card rainbow-border holographic">
+                    <div class="core-card">
                         <div class="text-xl font-bold corelock-glow mb-6 flex items-center space-x-2">
                             <span style="font-size: 24px;">🎨</span>
                             <span>CORELOCK NFTS</span>
