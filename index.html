@@ -868,6 +868,258 @@
             background: linear-gradient(45deg, rgba(0, 212, 255, 0.6), rgba(100, 149, 237, 0.6));
             border-radius: 3px;
         }
+
+        /* ═══════════════════════════════════════════════════════
+           🌌 EPIC NFT VORTEX & CYBERPUNK ENHANCEMENTS
+           ═══════════════════════════════════════════════════════ */
+
+        @keyframes vortexPulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 40px rgba(138, 43, 226, 0.8),
+                    0 0 80px rgba(255, 0, 255, 0.6),
+                    0 0 120px rgba(0, 212, 255, 0.4),
+                    inset 0 0 60px rgba(138, 43, 226, 0.3);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow:
+                    0 0 60px rgba(255, 0, 255, 1),
+                    0 0 120px rgba(138, 43, 226, 0.8),
+                    0 0 180px rgba(0, 212, 255, 0.6),
+                    inset 0 0 80px rgba(255, 0, 255, 0.4);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes nftFloat {
+            0%, 100% {
+                transform: translate(-50%, -50%) translateY(0px) rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 20px rgba(255, 0, 255, 1));
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(-15px) rotate(10deg) scale(1.1);
+                filter: drop-shadow(0 0 40px rgba(138, 43, 226, 1)) drop-shadow(0 0 60px rgba(0, 212, 255, 0.8));
+            }
+        }
+
+        @keyframes rotateRing {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes orbit1 {
+            0% {
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(0deg) translateX(140px) rotate(0deg);
+            }
+            100% {
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(360deg) translateX(140px) rotate(-360deg);
+            }
+        }
+
+        @keyframes orbit2 {
+            0% {
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(120deg) translateX(120px) rotate(-120deg);
+            }
+            100% {
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(480deg) translateX(120px) rotate(-480deg);
+            }
+        }
+
+        @keyframes orbit3 {
+            0% {
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(240deg) translateX(160px) rotate(-240deg);
+            }
+            100% {
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) rotate(600deg) translateX(160px) rotate(-600deg);
+            }
+        }
+
+        /* Enhanced Metric Cards with Cyberpunk Glow */
+        .metric-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Neon Text Enhancement */
+        .neon-text {
+            animation: neonFlicker 1.5s infinite alternate;
+        }
+
+        @keyframes neonFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow:
+                    0 0 10px rgba(0, 212, 255, 1),
+                    0 0 20px rgba(0, 212, 255, 0.8),
+                    0 0 30px rgba(0, 212, 255, 0.6),
+                    0 0 40px rgba(100, 149, 237, 0.4);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        /* Enhanced Glow for Cards */
+        .core-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .core-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle,
+                rgba(0, 212, 255, 0.1) 0%,
+                transparent 50%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .core-card:hover::after {
+            opacity: 1;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 0.6; }
+        }
+
+        /* Particle Trail Effect */
+        .particle-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00d4ff, transparent);
+            pointer-events: none;
+            z-index: 9999;
+            animation: fadeTrail 1s ease-out forwards;
+        }
+
+        @keyframes fadeTrail {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.2);
+            }
+        }
+
+        /* Enhanced Background Waves */
+        .field-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(138, 43, 226, 0.05) 0%, transparent 70%);
+            animation: waveShift 15s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes waveShift {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1) translate(20px, -20px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0.9) translate(-20px, 20px);
+                opacity: 0.5;
+            }
+        }
+
+        /* Rainbow Border Animation */
+        .rainbow-border {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 4, 40, 0.95) 0%, rgba(0, 78, 146, 0.4) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .rainbow-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(
+                45deg,
+                #ff00ff, #00d4ff, #00ff88, #ffd700,
+                #ff00ff, #00d4ff, #00ff88, #ffd700
+            );
+            background-size: 400% 400%;
+            border-radius: inherit;
+            z-index: -1;
+            animation: rainbowFlow 8s linear infinite;
+        }
+
+        @keyframes rainbowFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Holographic Effect */
+        .holographic {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 0, 255, 0.2) 0%,
+                rgba(0, 212, 255, 0.2) 25%,
+                rgba(0, 255, 136, 0.2) 50%,
+                rgba(255, 215, 0, 0.2) 75%,
+                rgba(255, 0, 255, 0.2) 100%
+            );
+            background-size: 400% 400%;
+            animation: holographicShift 6s ease-in-out infinite;
+        }
+
+        @keyframes holographicShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
     </style>
 </head>
 <body>
@@ -876,7 +1128,7 @@
     <div class="field-container">
         <div class="content">
             <!-- Enhanced CoreLock Logo Shrine -->
-            <header class="shrine-header chrome-border" style="
+            <header class="shrine-header rainbow-border holographic" style="
                 background: radial-gradient(circle at center, rgba(0, 212, 255, 0.4) 0%, rgba(0, 4, 40, 0.98) 70%),
                             linear-gradient(135deg, rgba(0, 4, 40, 0.95) 0%, rgba(0, 78, 146, 0.8) 100%);
                 backdrop-filter: blur(30px);
@@ -924,20 +1176,20 @@
                         ">
                     </div>
                     
-                    <div class="shrine-title" style="
+                    <div class="shrine-title neon-text" style="
                         font-family: 'Orbitron', monospace;
                         font-size: 2.5rem;
                         font-weight: 900;
                         text-transform: uppercase;
                         letter-spacing: 5px;
-                        background: linear-gradient(45deg, #00d4ff, #6495ed, #87ceeb, #00d4ff);
+                        background: linear-gradient(45deg, #ff00ff, #00d4ff, #00ff88, #ffd700, #ff00ff);
                         background-size: 400% 400%;
                         background-clip: text;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                         animation: hologramShift 4s ease-in-out infinite;
-                        text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-                    ">CORELOCK PULSE</div>
+                        text-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.6);
+                    ">✨ CORELOCK PULSE ✨</div>
                     
                     <div class="subtitle corelock-glow" style="
                         font-family: 'Inter', sans-serif;
@@ -1106,7 +1358,7 @@
             <!-- BIRDEYE HOMEPAGE WITH TRADING BUBBLES -->
             <div class="grid grid-cols-1 mb-6">
                 <div class="col-span-1">
-                    <div class="core-card chrome-border">
+                    <div class="core-card rainbow-border">
                         <div class="text-xl font-bold corelock-glow mb-4 flex items-center justify-center">
                             <div class="flex items-center space-x-2">
                                 <span style="font-size: 24px;">🦅</span>
@@ -1167,7 +1419,7 @@
             <div class="grid grid-cols-1">
                 <!-- DexScreener Live Chart -->
                 <div class="col-span-1">
-                    <div class="core-card chrome-border">
+                    <div class="core-card rainbow-border holographic">
                         <div class="text-xl font-bold corelock-glow mb-4 flex items-center space-x-2">
                             <span style="font-size: 24px;">📈</span>
                             <span>LIVE DEXSCREENER CHART</span>
@@ -1279,19 +1531,98 @@
 
                 <!-- CORELOCK NFT COLLECTION -->
                 <div class="col-span-1">
-                    <div class="core-card chrome-border">
+                    <div class="core-card rainbow-border holographic">
                         <div class="text-xl font-bold corelock-glow mb-6 flex items-center space-x-2">
                             <span style="font-size: 24px;">🎨</span>
                             <span>CORELOCK NFTS</span>
                         </div>
                         
                         <div class="space-y-4" id="nft-metrics-container">
-                            <div style="text-align: center; margin-bottom: 20px;">
-                                <img src="https://img.magiceden.dev/rs:fit:400:400:0:0/plain/https://i.seadn.io/gcs/files/be5a1743b2c38c7c2e6e8bb57f53c7e4.gif?auto=format&dpr=1&w=256" 
-                                     alt="CORELOCK NFT" 
-                                     style="width: 120px; height: 120px; border-radius: 15px; margin: 0 auto; 
-                                            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
-                                            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));">
+                            <!-- EPIC NFT VORTEX ANIMATION -->
+                            <div style="text-align: center; margin-bottom: 30px; position: relative;">
+                                <canvas id="nft-vortex-canvas" width="300" height="300" style="
+                                    display: block;
+                                    margin: 0 auto;
+                                    border-radius: 20px;
+                                    box-shadow:
+                                        0 0 40px rgba(138, 43, 226, 0.8),
+                                        0 0 80px rgba(255, 0, 255, 0.6),
+                                        0 0 120px rgba(0, 212, 255, 0.4),
+                                        inset 0 0 60px rgba(138, 43, 226, 0.3);
+                                    background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%);
+                                    border: 3px solid rgba(255, 0, 255, 0.6);
+                                    animation: vortexPulse 4s ease-in-out infinite;
+                                "></canvas>
+
+                                <!-- NFT Badge Overlay -->
+                                <div style="
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    font-size: 64px;
+                                    animation: nftFloat 3s ease-in-out infinite;
+                                    filter: drop-shadow(0 0 20px rgba(255, 0, 255, 1));
+                                    pointer-events: none;
+                                    z-index: 10;
+                                ">🎨</div>
+
+                                <!-- Orbiting Particles -->
+                                <div class="nft-orbit-container" style="
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 320px;
+                                    height: 320px;
+                                    pointer-events: none;
+                                ">
+                                    <div class="orbit-particle" style="
+                                        position: absolute;
+                                        width: 12px;
+                                        height: 12px;
+                                        background: radial-gradient(circle, #ff00ff, #8a2be2);
+                                        border-radius: 50%;
+                                        box-shadow: 0 0 20px #ff00ff;
+                                        animation: orbit1 4s linear infinite;
+                                    "></div>
+                                    <div class="orbit-particle" style="
+                                        position: absolute;
+                                        width: 10px;
+                                        height: 10px;
+                                        background: radial-gradient(circle, #00d4ff, #6495ed);
+                                        border-radius: 50%;
+                                        box-shadow: 0 0 20px #00d4ff;
+                                        animation: orbit2 3s linear infinite;
+                                    "></div>
+                                    <div class="orbit-particle" style="
+                                        position: absolute;
+                                        width: 8px;
+                                        height: 8px;
+                                        background: radial-gradient(circle, #00ff88, #00d4ff);
+                                        border-radius: 50%;
+                                        box-shadow: 0 0 15px #00ff88;
+                                        animation: orbit3 5s linear infinite;
+                                    "></div>
+                                </div>
+
+                                <!-- Glow Ring -->
+                                <div style="
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 280px;
+                                    height: 280px;
+                                    border: 2px solid transparent;
+                                    border-radius: 50%;
+                                    background: linear-gradient(45deg, #ff00ff, #00d4ff, #00ff88, #ff00ff) border-box;
+                                    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+                                    -webkit-mask-composite: xor;
+                                    mask-composite: exclude;
+                                    animation: rotateRing 8s linear infinite;
+                                    pointer-events: none;
+                                "></div>
                             </div>
                             
                             <div class="metric-item" 
@@ -1539,7 +1870,141 @@
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
-        
+
+        // ═══════════════════════════════════════════════════════
+        // 🌌 EPIC NFT VORTEX RENDERER
+        // ═══════════════════════════════════════════════════════
+        function initNFTVortex() {
+            const canvas = document.getElementById('nft-vortex-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            let time = 0;
+
+            function drawVortex() {
+                // Clear with fade effect for trail
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw spiral vortex
+                const spirals = 8;
+                const maxRadius = 140;
+
+                for (let s = 0; s < spirals; s++) {
+                    const spiralOffset = (s / spirals) * Math.PI * 2;
+
+                    for (let i = 0; i < 150; i++) {
+                        const progress = i / 150;
+                        const angle = spiralOffset + progress * Math.PI * 6 + time * 0.02;
+                        const radius = progress * maxRadius * (1 + Math.sin(time * 0.01 + progress * 3) * 0.2);
+
+                        const x = centerX + Math.cos(angle) * radius;
+                        const y = centerY + Math.sin(angle) * radius;
+
+                        // Color gradient based on position
+                        const hue = (s / spirals) * 360 + time * 2;
+                        const saturation = 100;
+                        const lightness = 40 + progress * 30;
+
+                        const size = 3 * (1 - progress) + Math.sin(time * 0.05 + i * 0.2) * 1.5;
+
+                        // Glow effect
+                        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2);
+                        gradient.addColorStop(0, `hsla(${hue}, ${saturation}%, ${lightness}%, 0.9)`);
+                        gradient.addColorStop(0.5, `hsla(${hue}, ${saturation}%, ${lightness}%, 0.4)`);
+                        gradient.addColorStop(1, `hsla(${hue}, ${saturation}%, ${lightness}%, 0)`);
+
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(x, y, size * 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                // Draw center energy orb
+                const orbSize = 20 + Math.sin(time * 0.05) * 8;
+                const orbGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, orbSize);
+                orbGradient.addColorStop(0, 'rgba(255, 0, 255, 1)');
+                orbGradient.addColorStop(0.3, 'rgba(138, 43, 226, 0.8)');
+                orbGradient.addColorStop(0.6, 'rgba(0, 212, 255, 0.4)');
+                orbGradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+
+                ctx.fillStyle = orbGradient;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, orbSize, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Energy rings
+                for (let ring = 0; ring < 3; ring++) {
+                    const ringRadius = 40 + ring * 30 + Math.sin(time * 0.03 + ring) * 10;
+                    const ringAlpha = 0.6 - ring * 0.2;
+
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${ringAlpha})`;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, ringRadius, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+
+                time++;
+                requestAnimationFrame(drawVortex);
+            }
+
+            drawVortex();
+        }
+
+        // Initialize vortex when DOM is ready
+        setTimeout(initNFTVortex, 100);
+
+        // ═══════════════════════════════════════════════════════
+        // 🎨 PARTICLE TRAIL EFFECTS
+        // ═══════════════════════════════════════════════════════
+        let mouseTrailEnabled = true;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        let mouseTrailTimer = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            if (!mouseTrailEnabled) return;
+
+            const now = Date.now();
+            if (now - mouseTrailTimer < 50) return; // Throttle to every 50ms
+            mouseTrailTimer = now;
+
+            const dx = e.clientX - lastMouseX;
+            const dy = e.clientY - lastMouseY;
+            const speed = Math.sqrt(dx * dx + dy * dy);
+
+            if (speed > 5) { // Only create trail if moving fast enough
+                createParticleTrail(e.clientX, e.clientY);
+            }
+
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        });
+
+        function createParticleTrail(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'particle-trail';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+
+            // Random color from palette
+            const colors = [
+                'radial-gradient(circle, #00d4ff, transparent)',
+                'radial-gradient(circle, #ff00ff, transparent)',
+                'radial-gradient(circle, #00ff88, transparent)',
+                'radial-gradient(circle, #ffd700, transparent)'
+            ];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => particle.remove(), 1000);
+        }
+
         // MELANUTH Enhanced Multi-Source API Integration - DEXSCREENER PRIMARY
         const CORELOCK_TOKEN = 'GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump';
         
