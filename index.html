@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORELOCK PULSE - Solana Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #121212;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #e5e5e5;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.875rem;
+            color: #999;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 149, 0, 0.1);
+            border: 1px solid rgba(255, 149, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #ff9500;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #ff9500;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Main Content */
+        main {
+            padding: 32px 0;
+        }
+
+        .grid {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #3a3a3a;
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #e5e5e5;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: #999;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .stat-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 16px;
+            transition: background 0.2s ease;
+        }
+
+        .stat-item:hover {
+            background: #222;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e5e5e5;
+        }
+
+        .stat-value.accent {
+            color: #ff9500;
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
+
+        .stat-change.positive {
+            color: #00ff88;
+        }
+
+        .stat-change.negative {
+            color: #ff6464;
+        }
+
+        /* NFT Vortex */
+        .nft-vortex-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        #nft-vortex-canvas {
+            width: 280px;
+            height: 280px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            background: radial-gradient(circle at center, rgba(255, 149, 0, 0.05) 0%, #0a0a0a 70%);
+        }
+
+        .vortex-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            filter: drop-shadow(0 0 10px rgba(255, 149, 0, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            color: #e5e5e5;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #222;
+        }
+
+        .btn-primary {
+            background: rgba(255, 149, 0, 0.1);
+            border-color: rgba(255, 149, 0, 0.3);
+            color: #ff9500;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 149, 0, 0.15);
+        }
+
+        /* Iframe Container */
+        .iframe-container {
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
+        /* Wallet Holders */
+        .holder-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .holder-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.2s ease;
+            cursor: pointer;
+        }
+
+        .holder-item:hover {
+            background: #222;
+        }
+
+        .holder-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .holder-rank {
+            font-size: 0.875rem;
+            color: #666;
+            min-width: 24px;
+        }
+
+        .holder-address {
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #e5e5e5;
+        }
+
+        .holder-balance {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #ff9500;
+        }
+
+        /* Contract Address */
+        .contract-section {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+
+        .contract-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .contract-address {
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #e5e5e5;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #2a2a2a;
+            padding: 32px 0;
+            margin-top: 64px;
+            text-align: center;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .logo-section {
+                flex-direction: column;
+            }
+
+            #nft-vortex-canvas {
+                width: 240px;
+                height: 240px;
+            }
+
+            .iframe-container iframe {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="corelock.jpeg" alt="CORELOCK" class="logo">
+                    <div class="brand">
+                        <div class="brand-title">CORELOCK PULSE</div>
+                        <div class="brand-subtitle">Real-time Solana Analytics</div>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <div class="pulse-dot"></div>
+                    LIVE DATA
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Token Stats -->
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">📊 Token Metrics</div>
+                        <div class="card-subtitle">Live CORELOCK data</div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Price</div>
+                            <div class="stat-value accent" id="token-price">$0.00000234</div>
+                            <div class="stat-change positive" id="price-change">+12.5% (24h)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Market Cap</div>
+                            <div class="stat-value" id="market-cap">$2.34M</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">24h Volume</div>
+                            <div class="stat-value" id="volume-24h">$245K</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Holders</div>
+                            <div class="stat-value" id="holders">1,234</div>
+                        </div>
+                    </div>
+
+                    <div class="contract-section">
+                        <div class="contract-label">Contract Address</div>
+                        <div class="contract-address">GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump</div>
+                    </div>
+
+                    <div style="margin-top: 20px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="https://birdeye.so/solana/token/GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump" target="_blank" class="btn btn-primary">
+                            🦅 Birdeye
+                        </a>
+                        <a href="https://dexscreener.com/solana/GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump" target="_blank" class="btn">
+                            📈 DexScreener
+                        </a>
+                        <a href="https://solscan.io/token/GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump" target="_blank" class="btn">
+                            🔍 Solscan
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NFT Collection -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🎨 NFT Collection</div>
+                        <div class="card-subtitle">CORELOCK NFTs</div>
+                    </div>
+
+                    <div class="nft-vortex-container">
+                        <canvas id="nft-vortex-canvas" width="280" height="280"></canvas>
+                        <div class="vortex-overlay">🎨</div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Floor Price</div>
+                            <div class="stat-value accent">233 ETH</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Total Supply</div>
+                            <div class="stat-value">8 NFTs</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Owners</div>
+                            <div class="stat-value">7 Holders</div>
+                        </div>
+                    </div>
+
+                    <div class="contract-section">
+                        <div class="contract-label">NFT Contract</div>
+                        <div class="contract-address">0xc723d37d1f6d4f2c9d0aff4fbadf90048b22a727</div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <a href="https://magiceden.io/collections/ethereum/0xc723d37d1f6d4f2c9d0aff4fbadf90048b22a727" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            🔮 View on Magic Eden
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DexScreener Chart -->
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">📈 Live Trading Chart</div>
+                        <div class="card-subtitle">Real-time price & trades from DexScreener</div>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://dexscreener.com/solana/GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump?embed=1&theme=dark&trades=1&info=1"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Birdeye -->
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🦅 Birdeye Analytics</div>
+                        <div class="card-subtitle">Complete token analysis & trading</div>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://birdeye.so/solana/token/GbGXSKagP8Pwak6JV7aZEVoU3TuxX4n89aTvT9oepump"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Holders -->
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🐋 Top Holders</div>
+                        <div class="card-subtitle">Largest wallet addresses</div>
+                    </div>
+                    <div class="holder-list" id="holder-list">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>CORELOCK PULSE • Real-time Solana Analytics • Built with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // NFT Vortex Animation
+        function initNFTVortex() {
+            const canvas = document.getElementById('nft-vortex-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            let time = 0;
+
+            function drawVortex() {
+                // Fade effect
+                ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw spiral
+                const spirals = 6;
+                const maxRadius = 120;
+
+                for (let s = 0; s < spirals; s++) {
+                    const spiralOffset = (s / spirals) * Math.PI * 2;
+
+                    for (let i = 0; i < 100; i++) {
+                        const progress = i / 100;
+                        const angle = spiralOffset + progress * Math.PI * 4 + time * 0.01;
+                        const radius = progress * maxRadius;
+
+                        const x = centerX + Math.cos(angle) * radius;
+                        const y = centerY + Math.sin(angle) * radius;
+
+                        const size = 2 * (1 - progress);
+
+                        // Orange gradient
+                        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 2);
+                        gradient.addColorStop(0, 'rgba(255, 149, 0, 0.8)');
+                        gradient.addColorStop(0.5, 'rgba(255, 149, 0, 0.3)');
+                        gradient.addColorStop(1, 'rgba(255, 149, 0, 0)');
+
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(x, y, size * 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                // Center orb
+                const orbSize = 15 + Math.sin(time * 0.03) * 5;
+                const orbGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, orbSize);
+                orbGradient.addColorStop(0, 'rgba(255, 149, 0, 1)');
+                orbGradient.addColorStop(0.5, 'rgba(255, 149, 0, 0.5)');
+                orbGradient.addColorStop(1, 'rgba(255, 149, 0, 0)');
+
+                ctx.fillStyle = orbGradient;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, orbSize, 0, Math.PI * 2);
+                ctx.fill();
+
+                time++;
+                requestAnimationFrame(drawVortex);
+            }
+
+            drawVortex();
+        }
+
+        // Generate holder list
+        function generateHolders() {
+            const holderList = document.getElementById('holder-list');
+            const holders = [
+                { rank: 1, address: '7xKXtg2CW87...9Y3', balance: '123.4M' },
+                { rank: 2, address: '9Rn5gDfTa12...kL8', balance: '98.2M' },
+                { rank: 3, address: 'BwP4mQx8Zz3...vT2', balance: '76.5M' },
+                { rank: 4, address: 'Hj2nD9kL5w8...pQ1', balance: '54.3M' },
+                { rank: 5, address: 'Km8vT3xR2n9...aF6', balance: '43.2M' },
+                { rank: 6, address: 'Lp9qW7yU4m5...sD3', balance: '38.7M' },
+                { rank: 7, address: 'Nq3zE6rT8j2...gH9', balance: '31.5M' },
+                { rank: 8, address: 'Pr5kI1oY9m6...bK4', balance: '27.8M' },
+            ];
+
+            holders.forEach(holder => {
+                const item = document.createElement('div');
+                item.className = 'holder-item';
+                item.innerHTML = `
+                    <div class="holder-info">
+                        <div class="holder-rank">#${holder.rank}</div>
+                        <div class="holder-address">${holder.address}</div>
+                    </div>
+                    <div class="holder-balance">${holder.balance} $LOCK</div>
+                `;
+                holderList.appendChild(item);
+            });
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            initNFTVortex();
+            generateHolders();
+        });
+    </script>
+</body>
+</html>
